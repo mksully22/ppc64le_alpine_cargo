@@ -1,0 +1,11 @@
+--- a/registry/src/github.com-1ecc6299db9ec823/libgit2-sys-0.6.19/libgit2/src/util.c	2018-04-18 17:49:40.725949434 +0000
++++ b/registry/src/github.com-1ecc6299db9ec823/libgit2-sys-0.6.19/libgit2/src/util.c	2018-04-18 17:49:55.894254615 +0000
+@@ -650,7 +650,7 @@
+ 	git__qsort_r_glue glue = { cmp, payload };
+ 	qsort_r(els, nel, elsize, &glue, git__qsort_r_glue_cmp);
+ #elif defined(HAVE_QSORT_R) && defined(__GLIBC__)
+-	qsort_r(els, nel, elsize, cmp, payload);
++	git__insertsort_r(els, nel, elsize, NULL, cmp, payload);
+ #elif defined(HAVE_QSORT_S)
+ 	git__qsort_r_glue glue = { cmp, payload };
+ 	qsort_s(els, nel, elsize, git__qsort_r_glue_cmp, &glue);
